@@ -2,11 +2,26 @@
   "name": "红外光学计算器",
   "short_name": "红外计算器",
   "description": "用于计算红外光学视场角、分辨率和参考探测距离的手机计算器。",
-  "start_url": "./index.html",
+  "id": "/infrared-optics-calculator/",
+  "start_url": "/infrared-optics-calculator/",
+  "scope": "/infrared-optics-calculator/",
   "display": "standalone",
   "background_color": "#d9e9f5",
   "theme_color": "#4f7da1",
+  "orientation": "portrait",
   "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
     {
       "src": "icons/icon-192.svg",
       "sizes": "192x192",

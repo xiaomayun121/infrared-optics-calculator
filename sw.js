@@ -1,10 +1,12 @@
-const CACHE_NAME = "infrared-optics-calculator-v1";
+const CACHE_NAME = "infrared-optics-calculator-v2";
 const APP_FILES = [
   "./",
   "./index.html",
   "./styles.css",
   "./app.js",
   "./manifest.webmanifest",
+  "./icons/icon-192.png",
+  "./icons/icon-512.png",
   "./icons/icon-192.svg",
   "./icons/icon-512.svg",
 ];
