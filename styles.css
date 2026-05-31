@@ -1,0 +1,333 @@
+:root {
+  color-scheme: light;
+  --page: #edf2f6;
+  --panel: #d9e9f5;
+  --panel-deep: #c7dceb;
+  --ink: #172333;
+  --muted: #607182;
+  --line: #263241;
+  --input: #f3f9ff;
+  --accent: #4f7da1;
+  --accent-dark: #245577;
+  --shadow: 0 22px 60px rgba(24, 47, 70, 0.18);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", Arial, sans-serif;
+  color: var(--ink);
+  background: var(--page);
+}
+
+.app-shell {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+}
+
+.workspace {
+  width: min(760px, 100%);
+  padding: 22px;
+  border: 1px solid rgba(79, 125, 161, 0.2);
+  border-radius: 30px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.eyebrow {
+  margin: 0 0 3px;
+  color: var(--accent-dark);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: 23px;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.header-tools {
+  flex: 0 0 auto;
+  display: grid;
+  justify-items: end;
+  gap: 7px;
+}
+
+.creator-mark {
+  width: max-content;
+  max-width: 100%;
+  padding: 3px 9px;
+  border: 1px solid rgba(36, 85, 119, 0.22);
+  border-radius: 999px;
+  color: rgba(36, 85, 119, 0.86);
+  background: rgba(255, 255, 255, 0.36);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
+.action-group {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 8px;
+}
+
+.action-button {
+  flex: 0 0 auto;
+  min-width: 58px;
+  height: 40px;
+  border: 1px solid rgba(36, 85, 119, 0.32);
+  border-radius: 8px;
+  padding: 0 12px;
+  color: var(--accent-dark);
+  background: rgba(255, 255, 255, 0.52);
+  font: inherit;
+  font-weight: 700;
+}
+
+.action-button.primary {
+  color: #fff;
+  background: var(--accent);
+}
+
+.input-panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid rgba(79, 125, 161, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.field {
+  display: grid;
+  grid-template-columns: max-content minmax(58px, 1fr) max-content;
+  align-items: center;
+  gap: 7px;
+  min-width: 0;
+  font-size: 14px;
+}
+
+.field span,
+.field b,
+.field em {
+  white-space: nowrap;
+}
+
+.field b,
+.field em {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.chip-size {
+  grid-column: 1 / -1;
+  grid-template-columns: max-content minmax(74px, 1fr) max-content minmax(74px, 1fr) max-content minmax(68px, 0.9fr) max-content;
+}
+
+input {
+  width: 100%;
+  height: 32px;
+  min-width: 0;
+  border: 1px solid #203f63;
+  border-radius: 3px;
+  padding: 4px 7px;
+  color: var(--ink);
+  background: var(--input);
+  font: inherit;
+  outline: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(79, 125, 161, 0.18);
+}
+
+.table-panel {
+  overflow: hidden;
+  border: 2px solid var(--line);
+  border-radius: 2px;
+  background: var(--panel);
+}
+
+.table-panel + .table-panel,
+.formula-panel {
+  margin-top: 12px;
+}
+
+.table-title {
+  padding: 8px;
+  border-bottom: 2px solid var(--line);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  height: 34px;
+  border-right: 2px solid var(--line);
+  border-bottom: 2px solid var(--line);
+  padding: 5px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  vertical-align: middle;
+}
+
+tr:last-child th,
+tr:last-child td {
+  border-bottom: 0;
+}
+
+th:last-child,
+td:last-child {
+  border-right: 0;
+}
+
+thead th {
+  background: var(--panel-deep);
+  font-weight: 700;
+}
+
+tbody th {
+  width: 36%;
+  text-align: left;
+}
+
+output {
+  display: block;
+  min-height: 18px;
+  color: var(--accent-dark);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.formula-panel {
+  padding: 0 2px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+summary {
+  width: max-content;
+  color: var(--accent-dark);
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.formula-panel p {
+  margin: 7px 0 0;
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    min-height: 100dvh;
+    padding: 0;
+    place-items: stretch;
+  }
+
+  .workspace {
+    width: 100%;
+    min-height: 100dvh;
+    padding: max(18px, env(safe-area-inset-top)) 12px max(18px, env(safe-area-inset-bottom));
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .input-panel {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .chip-size,
+  .field:first-child {
+    grid-column: 1 / -1;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .creator-mark {
+    font-size: 11px;
+  }
+
+  .action-button {
+    min-width: 52px;
+    height: 36px;
+    padding: 0 10px;
+  }
+
+  th,
+  td {
+    height: 33px;
+    padding: 5px 4px;
+    font-size: 12px;
+  }
+
+  tbody th {
+    width: 39%;
+  }
+}
+
+@media (max-width: 430px) {
+  .input-panel {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .field {
+    grid-column: 1 / -1;
+  }
+
+  .chip-size {
+    grid-template-columns: max-content minmax(54px, 1fr) max-content minmax(54px, 1fr) max-content minmax(50px, 0.84fr) max-content;
+  }
+
+  .table-title {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    font-size: 11px;
+  }
+}

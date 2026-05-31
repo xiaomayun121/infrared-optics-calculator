@@ -1,0 +1,168 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#4f7da1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="红外计算器" />
+    <title>红外光学计算器</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="workspace" aria-label="红外光学计算器">
+        <header class="page-header">
+          <div>
+            <p class="eyebrow">Infrared Optics</p>
+            <h1>红外光学计算器</h1>
+          </div>
+          <div class="header-tools">
+            <div class="creator-mark" aria-label="UP 青叶泛华">UP 青叶泛华</div>
+            <div class="action-group" aria-label="操作按钮">
+              <button class="action-button primary" id="calculateButton" type="button">确定</button>
+              <button class="action-button" id="resetButton" type="button">刷新</button>
+            </div>
+          </div>
+        </header>
+
+        <section class="input-panel" aria-label="输入参数">
+          <label class="field chip-size">
+            <span>机芯大小</span>
+            <input id="pixelsH" type="text" inputmode="decimal" placeholder="640" />
+            <b>x</b>
+            <input id="pixelsV" type="text" inputmode="decimal" placeholder="512" />
+            <b>-</b>
+            <input id="pixelSize" type="text" inputmode="decimal" placeholder="12" />
+            <em>μm</em>
+          </label>
+
+          <label class="field">
+            <span>焦距</span>
+            <input id="focalLength" type="text" inputmode="decimal" placeholder="25" />
+            <em>mm</em>
+          </label>
+
+          <label class="field">
+            <span>F#</span>
+            <input id="fNumber" type="text" inputmode="decimal" placeholder="1.0" />
+          </label>
+
+          <label class="field">
+            <span>中心波长</span>
+            <input id="wavelength" type="text" inputmode="decimal" placeholder="10" />
+            <em>μm</em>
+          </label>
+
+          <label class="field">
+            <span>参考物体大小</span>
+            <input id="targetSize" type="text" inputmode="decimal" placeholder="1.8" />
+            <em>m</em>
+          </label>
+        </section>
+
+        <section class="table-panel" aria-label="探测器视场角">
+          <div class="table-title">探测器视场角</div>
+          <table>
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">水平 H</th>
+                <th scope="col">垂直 V</th>
+                <th scope="col">对角 D</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">像素数</th>
+                <td><output id="outPixelsH"></output></td>
+                <td><output id="outPixelsV"></output></td>
+                <td><output id="outPixelsD"></output></td>
+              </tr>
+              <tr>
+                <th scope="row">线性尺寸(mm)</th>
+                <td><output id="outSizeH"></output></td>
+                <td><output id="outSizeV"></output></td>
+                <td><output id="outSizeD"></output></td>
+              </tr>
+              <tr>
+                <th scope="row">视场角(°)</th>
+                <td><output id="outFovH"></output></td>
+                <td><output id="outFovV"></output></td>
+                <td><output id="outFovD"></output></td>
+              </tr>
+              <tr>
+                <th scope="row">半视场(°)</th>
+                <td><output id="outHalfFovH"></output></td>
+                <td><output id="outHalfFovV"></output></td>
+                <td><output id="outHalfFovD"></output></td>
+              </tr>
+              <tr>
+                <th scope="row">半像高(mm)</th>
+                <td><output id="outHalfSizeH"></output></td>
+                <td><output id="outHalfSizeV"></output></td>
+                <td><output id="outHalfSizeD"></output></td>
+              </tr>
+              <tr class="full-row">
+                <th scope="row">探测器极限分辨率(lp/mm)</th>
+                <td colspan="3"><output id="outNyquist"></output></td>
+              </tr>
+              <tr class="full-row">
+                <th scope="row">光学衍射极限(lp/mm)</th>
+                <td colspan="3"><output id="outDiffraction"></output></td>
+              </tr>
+              <tr class="full-row">
+                <th scope="row">衍射MTF@探测器极限(lp/mm)</th>
+                <td colspan="3"><output id="outMtf"></output></td>
+              </tr>
+              <tr class="full-row">
+                <th scope="row">空间分辨率（mrad）</th>
+                <td colspan="3"><output id="outIfov"></output></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="table-panel compact" aria-label="参考约翰逊法则">
+          <div class="table-title">参考约翰逊法则</div>
+          <table>
+            <tbody>
+              <tr>
+                <th scope="row">探测（2/4像素）</th>
+                <td><output id="outDetect2"></output></td>
+                <td><output id="outDetect4"></output></td>
+                <td>km</td>
+              </tr>
+              <tr>
+                <th scope="row">识别（4/8像素）</th>
+                <td><output id="outRecognize4"></output></td>
+                <td><output id="outRecognize8"></output></td>
+                <td>km</td>
+              </tr>
+              <tr>
+                <th scope="row">辨认（8/12像素）</th>
+                <td><output id="outIdentify8"></output></td>
+                <td><output id="outIdentify12"></output></td>
+                <td>km</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section class="formula-panel" aria-label="公式说明">
+          <details>
+            <summary>计算公式</summary>
+            <p>光学衍射极限：fc = 1 / (λ × F#)</p>
+            <p>衍射MTF@探测器极限：MTF(f) = 2/pi × [ arccos(u) - u × sqrt(1 - u^2) ]，u = f / fc = f × λ × F#</p>
+            <p>探测器极限分辨率：f_Nyquist = 1 / (2 × 像元尺寸)</p>
+            <p>空间分辨率：IFOV = 像元尺寸 / 焦距</p>
+            <p>约翰逊法则距离仅供参考。</p>
+          </details>
+        </section>
+      </section>
+    </main>
+    <script src="app.js" defer></script>
+  </body>
+</html>
